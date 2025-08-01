@@ -1,9 +1,6 @@
 name: Build Wyoming Piper GLaDOS Image
 
 on:
-  push:
-    branches:
-      - master
   pull_request:
     branches:
       - master
@@ -35,3 +32,5 @@ jobs:
           tags: |
             ${{ env.DOCKER_REGISTRY }}/${{ github.repository_owner }}/${{ env.DOCKER_IMAGE_NAME }}:latest
             ${{ env.DOCKER_REGISTRY }}/${{ github.repository_owner }}/${{ env.DOCKER_IMAGE_NAME }}:${{ env.IMAGE_VERSION }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
