@@ -2,14 +2,22 @@
 name: Build Wyoming Piper GLaDOS Image
 
 on:
-  pull_request:
-    branches:
-      - master
+  workflow_call:
+    inputs:
+      base_piper_version:
+        description: 'Base version of Wyoming Piper image to use'
+        required: true
+        type: string
+      push_image:
+        description: 'Whether to push the built image to the registry'
+        required: false
+        type: boolean
+        default: false
 
 env:
-  DOCKER_IMAGE_NAME: wyoming-piper-glados
+  IMAGE_NAME: wyoming-piper-glados
   DOCKER_REGISTRY: ghcr.io
-  IMAGE_VERSION: 1.6.2
+  IMAGE_VERSION: ${{ inputs.base_piper_version }}
 
 jobs:
   build:
@@ -29,10 +37,9 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          push: false
-          # yamllint disable rule:line-length
+          push: ${{ inputs.push_image }}
           tags: |
-            ${{ env.DOCKER_REGISTRY }}/${{ github.repository_owner }}/${{ env.DOCKER_IMAGE_NAME }}:latest
-            ${{ env.DOCKER_REGISTRY }}/${{ github.repository_owner }}/${{ env.DOCKER_IMAGE_NAME }}:${{ env.IMAGE_VERSION }}
+            ${{ env.DOCKER_REGISTRY }}/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:latest
+            ${{ env.DOCKER_REGISTRY }}/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_VERSION }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
