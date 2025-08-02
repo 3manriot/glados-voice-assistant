@@ -18,3 +18,4 @@ jobs:
     uses: ./.github/workflows/build-image.yaml
     with:
       base_piper_version: '1.6.2'
+      run_number: ${{ github.run_number }}
