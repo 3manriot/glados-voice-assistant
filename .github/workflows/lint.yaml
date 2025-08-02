@@ -18,3 +18,13 @@ jobs:
 
       - name: Run yamllint
         run: yamllint -c .yamllint.yml .
+  lint_dockerfile:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run hadolint
+        uses: hadolint/hadolint-action@v3.1.0
+        with:
+          dockerfile: Dockerfile
