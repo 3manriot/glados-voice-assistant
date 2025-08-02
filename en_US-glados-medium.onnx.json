@@ -1,8 +1,8 @@
 {
-    "dataset": "glados",
+    "dataset": "en_US-glados-medium",
     "audio": {
         "sample_rate": 22050,
-        "quality": "stacked_llama"
+        "quality": "medium"
     },
     "espeak": {
         "voice": "en-us"
