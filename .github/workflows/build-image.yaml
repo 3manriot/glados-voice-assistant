@@ -30,6 +30,7 @@ jobs:
           context: .
           file: ./Dockerfile
           push: false
+          # yamllint disable rule:line-length
           tags: |
             ${{ env.DOCKER_REGISTRY }}/${{ github.repository_owner }}/${{ env.DOCKER_IMAGE_NAME }}:latest
             ${{ env.DOCKER_REGISTRY }}/${{ github.repository_owner }}/${{ env.DOCKER_IMAGE_NAME }}:${{ env.IMAGE_VERSION }}
