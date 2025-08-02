@@ -11,7 +11,7 @@ on:
       run_number:
         description: 'GitHub run number for tagging the image'
         required: true
-        type: number
+        type: string
       push_image:
         description: 'Whether to push the built image to the registry'
         required: false
