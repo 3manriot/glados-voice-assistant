@@ -15,7 +15,6 @@ jobs:
     permissions:
       contents: read
       packages: write
-    needs: lint
     uses: ./.github/workflows/build-image.yaml
     with:
       base_piper_version: '1.6.2'
