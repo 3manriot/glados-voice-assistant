@@ -17,5 +17,5 @@ jobs:
       packages: write
     uses: ./.github/workflows/build-image.yaml
     with:
-      base_piper_version: '1.6.2'
+      base_piper_version: '1.6.3'
       run_number: ${{ github.run_number }}
