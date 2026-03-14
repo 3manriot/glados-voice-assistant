@@ -17,6 +17,7 @@ on:
 env:
   IMAGE_NAME: wyoming-piper-glados
   DOCKER_REGISTRY: ghcr.io
+  IMAGE_REF: ghcr.io/${{ github.repository_owner }}/wyoming-piper-glados
 
 jobs:
   build:
@@ -56,7 +57,7 @@ jobs:
           file: ./Dockerfile
           push: ${{ inputs.push_image }}
           tags: |
-            ${{ env.DOCKER_REGISTRY }}/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:latest
-            ${{ env.DOCKER_REGISTRY }}/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:${{ steps.piper-version.outputs.version }}-${{ inputs.run_number }}
+            ${{ env.IMAGE_REF }}:latest
+            ${{ env.IMAGE_REF }}:${{ steps.piper-version.outputs.version }}-${{ inputs.run_number }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
