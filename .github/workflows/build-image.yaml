@@ -58,6 +58,6 @@ jobs:
           push: ${{ inputs.push_image }}
           tags: |
             ${{ env.IMAGE_REF }}:latest
-            ${{ env.IMAGE_REF }}:${{ steps.piper-version.outputs.version }}-${{ inputs.run_number }}
+            ${{ env.IMAGE_REF }}:${{ steps.piper-version.outputs.version }}.${{ inputs.run_number }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
