@@ -1,4 +1,4 @@
-FROM rhasspy/wyoming-piper:2.3.1
+FROM rhasspy/wyoming-piper:2.4.2
 
 WORKDIR /app
 
